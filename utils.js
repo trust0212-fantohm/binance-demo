@@ -31,6 +31,7 @@ module.exports = {
   signMessage,
   getCurrentMinute,
   sleep,
-  sleepUntilNextMinute
+  sleepUntilNextMinute,
+  sleepUntilNextMinuteMinus1Sec
 }
 

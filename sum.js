@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { signMessage, getCurrentMinute, sleep, sleepUntilNextMinute } = require('./utils');
+const { signMessage, getCurrentMinute, sleep, sleepUntilNextMinute, sleepUntilNextMinuteMinus1Sec } = require('./utils');
 
 
 
@@ -15,7 +15,7 @@ async function fetchOHLC(url, headers = undefined, isCoinbase = false) {
 }
 
 async function main() {
-    await sleepUntilNextMinute();
+    await sleepUntilNextMinuteMinus1Sec();
     const binanceUrl = `https://api.binance.com/api/v3/klines?interval=1m&limit=2&symbol=BTCUSDT`;
     const binanceData_1 = await fetchOHLC(binanceUrl);
 
