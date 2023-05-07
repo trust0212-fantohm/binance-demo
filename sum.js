@@ -16,8 +16,11 @@ async function fetchOHLC(url, headers = undefined, isCoinbase = false) {
 
 async function main() {
     await sleepUntilNextMinute();
+    const binanceUrl = `https://api.binance.com/api/v3/klines?interval=1m&limit=2&symbol=BTCUSDT`;
+    const binanceData_1 = await fetchOHLC(binanceUrl);
+
+    await sleep(1000) // delay 1 second
     const time = getCurrentMinute();
-    const binanceUrl = `https://api.binance.com/api/v3/klines?interval=1m&limit=1&symbol=BTCUSDT&endTime=${time - 1}`;
     const binanceData0 = await fetchOHLC(binanceUrl);
 
     await sleep(1000) // delay 1 second
@@ -60,8 +63,9 @@ async function main() {
     // const coinbase = coinbaseData.candles;
 
     console.log("time: ", time)
-    console.log("binanceData at exact minute: ", binanceData0[0])
-    console.log("binanceData with some delay (1 second): ", binanceData1[0])
+    console.log("binanceData just before exact minute: ", binanceData_1)
+    console.log("binanceData at exact minute: ", binanceData0)
+    console.log("binanceData with some delay (1 second): ", binanceData1)
     // console.log("coinbaseData: ", coinbase[coinbase.length - 1]);
     // console.log("krakenData: ", kraken[0]);
 
