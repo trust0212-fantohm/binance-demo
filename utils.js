@@ -20,6 +20,13 @@ const sleepUntilNextMinute = async () => {
     getCurrentMinute() + MINUTE - Date.now(),
   );
 };
+
+const sleepUntilNextMinuteMinus1Sec = async () => {
+  await sleep(
+          getCurrentMinute() + MINUTE - Date.now() - 1000,
+  );
+};
+
 module.exports = {
   signMessage,
   getCurrentMinute,
